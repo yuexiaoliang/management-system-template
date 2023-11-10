@@ -1,0 +1,59 @@
+@mixin flex-center($axis: null, $direction: row, $inlineFlex: false) {
+  @if $inlineFlex {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  flex-direction: $direction;
+
+  @if $direction == 'row' or $direction == 'row-reverse' {
+    @if $axis == 'x' {
+      justify-content: center;
+    } @else if $axis == 'y' {
+      align-items: center;
+    } @else {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @if $direction == 'column' or $direction == 'column-reverse' {
+    @if $axis == 'x' {
+      align-items: center;
+    } @else if $axis == 'y' {
+      justify-content: center;
+    } @else {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@mixin ellipsis($line: 1) {
+  @if $line == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// 滚动条
+@mixin scroll-bar($width: 4px, $color: #ccc) {
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 10px;
+  }
+}

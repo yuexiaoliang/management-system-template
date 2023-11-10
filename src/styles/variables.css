@@ -1,0 +1,31 @@
+:root {
+  /* common */
+  --shadow: 0px 2px 10px 0px rgb(0 0 0 / 10%);
+  --background-color: #fff;
+  --primary-color: #0041fa;
+  --color: #333;
+  --font-size: 14px;
+  --border-color: #e5e6eb;
+  --font-family: -apple-system, 'Microsoft YaHei', sans-serif;
+  --headline-font-family: 'Source Han Sans CN-Medium', 'Source Han Sans', 'Arial Narrow', 'Microsoft YaHei', arial,
+    sans-serif;
+
+  /* container */
+  --container-background-color: var(--background-color);
+  --container-shadow: var(--shadow);
+  --container-radius: 8px;
+
+  /* layout */
+  --z-index: 1000;
+
+  /* header */
+  --header-height: 60px;
+  --header-bg: var(--background-color);
+
+  /* sider */
+  --sider-width: 240px;
+  --sider-bg: var(--background-color);
+
+  /* main */
+  --main-bg: #f2f3f5;
+}

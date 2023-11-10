@@ -1,0 +1,15 @@
+ls:
+  src:
+    .dir: kebabcase
+    .vue: kebabcase
+    .js: kebabcase
+    .css: kebabcase
+    .scss: kebabcase
+
+  src/**/hooks:
+    .js: camelcase
+
+ignore:
+  - node_modules
+  - src/styles/_mixins.scss
+  - src/apis
