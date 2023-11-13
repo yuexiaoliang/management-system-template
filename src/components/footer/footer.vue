@@ -4,9 +4,9 @@
 
 <style lang="scss" scoped>
 .footer {
-  padding: 15px 0;
-  text-align: center;
+  padding-bottom: 20px;
   font-size: 12px;
   color: #999;
+  text-align: center;
 }
 </style>

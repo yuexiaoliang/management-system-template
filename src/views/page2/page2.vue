@@ -10,15 +10,21 @@ export default defineComponent({
     }
 
     return () => (
-      <a-button class="btn" onClick={handleClick}>
-        点我
-      </a-button>
+      <div class="page2">
+        <a-button type="primary" class="btn" onClick={handleClick}>
+          点我
+        </a-button>
+      </div>
     )
   }
 })
 </script>
 
 <style lang="scss" scoped>
+.page2 {
+  background-color: #f2f2f2;
+}
+
 .btn {
   color: red;
 }

@@ -1,9 +1,24 @@
 <script setup>
+import { computed, ref } from 'vue'
+
+import { useElementSize } from '@vueuse/core'
+
+import Breadcrumb from '@/components/breadcrumb/breadcrumb.vue'
 import Footer from '@/components/footer/footer.vue'
 import Navbar from '@/components/navbar/navbar.vue'
 import SiderMenu from '@/components/sider-menu/sider-menu.vue'
 
 import PageLayout from './page-layout.vue'
+
+const breadcrumbRef = ref(null)
+const { height: _breadcrumbHeight } = useElementSize(breadcrumbRef)
+const breadcrumbHeight = computed(() => {
+  return _breadcrumbHeight.value ? `${_breadcrumbHeight.value + 20}px` : '0px'
+})
+
+const footerRef = ref(null)
+const { height: _footerHeight } = useElementSize(footerRef)
+const footerHeight = computed(() => `${_footerHeight.value + 20}px`)
 </script>
 
 <template>
@@ -20,10 +35,19 @@ import PageLayout from './page-layout.vue'
 
     <a-layout class="system-layout-main">
       <a-scrollbar>
-        <a-layout class="system-layout-content">
-          <PageLayout />
-        </a-layout>
-        <Footer />
+        <a-layout-content
+          class="system-layout-content"
+          :style="{
+            '--breadcrumb-height': breadcrumbHeight,
+            '--footer-height': footerHeight
+          }"
+        >
+          <Breadcrumb ref="breadcrumbRef" class="system-layout-breadcrumb" />
+
+          <PageLayout class="system-layout-body" />
+        </a-layout-content>
+
+        <Footer ref="footerRef" />
       </a-scrollbar>
     </a-layout>
   </a-layout>
@@ -82,7 +106,17 @@ import PageLayout from './page-layout.vue'
   }
 
   &-content {
-    padding: 15px 20px;
+    padding: 20px;
+  }
+
+  &-breadcrumb {
+    margin-bottom: 20px;
+  }
+
+  &-body {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - var(--breadcrumb-height) - 40px);
+    background-color: var(--body-bg);
+    border-radius: var(--border-radius);
   }
 }
 </style>

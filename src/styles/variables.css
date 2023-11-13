@@ -6,7 +6,8 @@
   --color: #333;
   --font-size: 14px;
   --border-color: #e5e6eb;
-  --font-family: -apple-system, 'Microsoft YaHei', sans-serif;
+  --border-radius: 6px;
+  --font-family: -apple-system, blinkmacsystemfont, 'Microsoft YaHei', sans-serif;
   --headline-font-family: 'Source Han Sans CN-Medium', 'Source Han Sans', 'Arial Narrow', 'Microsoft YaHei', arial,
     sans-serif;
 
@@ -28,4 +29,5 @@
 
   /* main */
   --main-bg: #f2f3f5;
+  --body-bg: var(--background-color);
 }

@@ -1,12 +1,17 @@
 <script lang="jsx">
-import { compile, defineComponent, h, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+import RenderIcon from '@/components/render-icon/render-icon.vue'
 import { listenerRouteChange, removeRouteListener } from '@/router/listener'
 import { siderMenus } from '@/router/routes/'
 import { validUrl } from '@/utils/validate'
 
 export default defineComponent({
+  components: {
+    RenderIcon
+  },
+
   setup() {
     const router = useRouter()
 
@@ -38,10 +43,6 @@ export default defineComponent({
       selectedKey.value = [menuOpenKeys.at(-1)]
     }, true)
 
-    const renderIcon = (icon) => {
-      return icon ? () => h(compile(`<${icon}/>`)) : null
-    }
-
     const renderSubMenu = () => {
       return travel(siderMenus)
 
@@ -58,7 +59,7 @@ export default defineComponent({
 
           if (hideInMenu) return
 
-          const icon = renderIcon(_icon)
+          const icon = () => <render-icon name={_icon} />
 
           if (children?.length > 0) {
             nodes.push(
@@ -114,7 +115,7 @@ function findMenuOpenKeys(target) {
     }
   }
   siderMenus.forEach((el) => {
-    if (isFind) return
+    if (isFind) return // Performance optimization
     backtrack(el, [el.name])
   })
   return result

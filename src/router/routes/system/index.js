@@ -1,3 +1,5 @@
+import home from '../home'
+
 import other from './other'
 import test from './test'
 
@@ -6,19 +8,7 @@ const route = {
   name: 'System',
   component: () => import('@/layout/system-layout.vue'),
 
-  children: [
-    {
-      path: '/',
-      name: 'Home',
-      component: () => import('@/views/home/home.vue'),
-      meta: {
-        title: '首页',
-        icon: 'icon-home'
-      }
-    },
-    ...test,
-    ...other
-  ]
+  children: [home, ...test, ...other]
 }
 
 export const siderMenus = route.children
